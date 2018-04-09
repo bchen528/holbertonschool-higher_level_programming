@@ -1,5 +1,5 @@
 #!/bin/bash
 python3 -m py_compile $PYFILE
 cd __pycache__ 
-mv *.pyc main.pyc
-mv main.pyc ..
+mv *.pyc "$PYFILE""c"
+mv "$PYFILE""c" ..
