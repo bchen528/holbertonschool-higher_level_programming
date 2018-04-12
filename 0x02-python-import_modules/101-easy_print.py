@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-import sys as cheese
-cheese.stdout.write("#pythoniscool\n")
+from sys import stdout
+stdout.write("#pythoniscool\n")
