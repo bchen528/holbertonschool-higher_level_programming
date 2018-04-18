@@ -7,5 +7,4 @@ def divisible_by_2(my_list=[]):
                 new[i] = True
             else:
                 new[i] = False
-        print (new)
         return new
