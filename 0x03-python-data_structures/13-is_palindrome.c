@@ -73,7 +73,7 @@ int is_palindrome(listint_t **head)
 
 	s = malloc(sizeof(int) * numNodes);
 	if (s == NULL)
-		return (0);
+		return (-1);
 
 	temp = *head;
 
