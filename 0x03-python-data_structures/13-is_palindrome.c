@@ -1,6 +1,52 @@
 #include "lists.h"
 
 /**
+ * _strlen_recursion - returns length of a string
+ * @s: string to be assessed
+ * Return: length of string
+ */
+
+int _strlen_recursion(char *s)
+{
+	if (*s == '\0')
+		return (0);
+	return (_strlen_recursion(s + 1) + 1);
+}
+
+/**
+ * check_palin - check if string is a palindrome
+ * @s: string to be assessed
+ * @start: first index
+ * @end: end index
+ * Return: 1 if palindrome, 0 if not palindrome
+ */
+
+int check_palin(char *s, int start, int end)
+{
+	if (s[start] != s[end])
+		return (0);
+	if (start >= end)
+		return (1);
+	return (check_palin(s, start + 1, end - 1));
+}
+
+/**
+ * is_palin - determine if string is a palindrome
+ * @s: string to be assessed
+ * Return: 1 if string is palindrome and 0 if not
+ */
+
+int is_palin(char *s)
+{
+	int end;
+
+	if (*s == '\0')
+		return (1);
+	end = _strlen_recursion(s) - 1;
+	return (check_palin(s, 0, end));
+}
+
+/**
  * is_palindrome - check if a singly linked list is a palindrome
  *
  * @head: start of linked list
@@ -11,35 +57,33 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *temp = NULL;
 	listint_t *p = NULL;
-	int len = 0;
-	int count = 0;
-
-	if (*head == NULL || head == NULL)
-		return (1);
+	char *s;
+	int numNodes = 0;
+	int i = 0;
 
 	while (p != NULL)
 	{
 		p = p->next;
-		len++;
+		numNodes++;
 	}
 
-	while (*head != NULL && *head != temp)
+	if (*head == NULL || head == NULL)
+		return (1);
+
+	s = malloc(sizeof(int) * numNodes);
+	if (s == NULL)
+		return (0);
+
+	temp = *head;
+
+	while (temp != NULL)
 	{
-		temp = *head;
-		if (*head == temp)
-			return (1);
-		while (count < len)
-		{
-			temp = temp->next;
-			count++;
-		}
-		len = count;
-		if ((*head)->n == temp->n)
-			*head = (*head)->next;
-		len--;
-		count = 0;
+		s[i] = temp->n;
+		temp = temp->next;
+		i++;
 	}
-	if (*head == temp)
+
+	if (is_palin(s) == 1)
 		return (1);
 	return (0);
 }
