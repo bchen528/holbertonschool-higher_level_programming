@@ -61,14 +61,15 @@ int is_palindrome(listint_t **head)
 	int numNodes = 0;
 	int i = 0;
 
+	if (*head == NULL || head == NULL)
+		return (1);
+
+	p = *head;
 	while (p != NULL)
 	{
 		p = p->next;
 		numNodes++;
 	}
-
-	if (*head == NULL || head == NULL)
-		return (1);
 
 	s = malloc(sizeof(int) * numNodes);
 	if (s == NULL)
@@ -84,6 +85,10 @@ int is_palindrome(listint_t **head)
 	}
 
 	if (is_palin(s) == 1)
+	{
+		free(s);
 		return (1);
+	}
+	free(s);
 	return (0);
 }
