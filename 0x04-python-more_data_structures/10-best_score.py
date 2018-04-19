@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
-    if a_dictionary is None && a_dictionary != {}:
+    if a_dictionary is None and a_dictionary != {}:
         return None
     flag = 1
     for key in a_dictionary:
