@@ -3,7 +3,6 @@ def best_score(a_dictionary):
     if a_dictionary is None:
         return None
     flag = 1
-    largestVal = 0
     largestKey = ""
     for key in a_dictionary:
         if flag == 1:
