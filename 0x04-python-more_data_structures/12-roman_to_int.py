@@ -5,38 +5,38 @@ def roman_to_int(roman_string):
 
     d = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
     flag = 0
-    sum = 0
+    num = []
 
     for i in range(len(roman_string)):
-        if roman_string[i] == 'I':
-            flag = 1
-        elif roman_string[i] == 'V':
-            sum = sum + d['V']
-        elif roman_string[i] == 'X':
-            sum = sum + d['X']
-        elif roman_string[i] == 'L':
-            sum = sum + d['L']
-        elif roman_string[i] == 'C':
-            sum = sum + d['C']
-        elif roman_string[i] == 'D':
-            sum = sum + d['D']
-        elif roman_string[i] == 'M':
-            sum = sum + d['M']
-
         if flag == 1:
             if roman_string[i] == 'I':
-                sum = sum + d['I']
+                num.append(d['I'] + d['I'])
             elif roman_string[i] == 'V':
-                sum = sum + d['V'] - d['I']
+                num.append(d['V'] - d['I'])
             elif roman_string[i] == 'X':
-                sum = sum + d['X'] - d['I']
+                num.append(d['X'] - d['I'])
             elif roman_string[i] == 'L':
-                sum = sum + d['L'] - d['I']
+                num.append(d['L'] - d['I'])
             elif roman_string[i] == 'C':
-                sum = sum + d['C'] - d['I']
+                num.append(d['C'] - d['I'])
             elif roman_string[i] == 'D':
-                sum = sum + d['D'] - d['I']
+                num.append(d['D'] - d['I'])
             elif roman_string[i] == 'M':
-                sum = sum + d['M'] - d['I']
+                num.append(d['M'] - d['I'])
             flag = 0
-    return sum
+        else:
+            if roman_string[i] == 'I':
+                flag = 1
+            elif roman_string[i] == 'V':
+                num.append(d['V'])
+            elif roman_string[i] == 'X':
+                num.append(d['X'])
+            elif roman_string[i] == 'L':
+                num.append(d['L'])
+            elif roman_string[i] == 'C':
+                num.append(d['C'])
+            elif roman_string[i] == 'D':
+                num.append(d['D'])
+            elif roman_string[i] == 'M':
+                num.append(d['M'])
+    return sum(num)
