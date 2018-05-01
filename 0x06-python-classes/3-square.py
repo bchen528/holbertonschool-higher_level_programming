@@ -8,8 +8,7 @@ class Square:
         Args:
         size (int): size of square
 
-        Returns:
-        None
+        Returns: None
         """
 
         if type(size) is not int:
@@ -19,6 +18,11 @@ class Square:
         self.__size = size
 
     def area(self):
-        """calculate area of square"""
+        """
+        calculate area of square
 
+        Args: None
+
+        Returns: area of square
+        """
         return self.__size * self.__size
