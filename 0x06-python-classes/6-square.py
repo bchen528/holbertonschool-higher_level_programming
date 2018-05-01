@@ -15,6 +15,11 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
+        if type(position[0]) is not int or type(position[1]) is not int:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif position[0] < 0 or position[1] < 0:
+            raise ValueError("position must be a tuple of 2 positive integers")
+
         self.__position = position
 
     @property
@@ -67,7 +72,6 @@ class Square:
                     print("#", end="")
                 print()
 
-
     @property
     def position(self):
         """get position of square
@@ -85,6 +89,6 @@ class Square:
         Args:
             value (int, int): value to assign position
         """
-        if type(value) is not int:
+        if type(value) is not int or value < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
