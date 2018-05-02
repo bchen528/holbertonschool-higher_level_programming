@@ -1,9 +1,9 @@
 #!/usr/bin/python3
+import math
 class _MagicClass:
     """creates a protected class, MagicClass"""
     def __init__(self, radius=0):
         """initialized attributes for instance of MagicClass
-
         Args:
             radius (int): radius
         """
@@ -19,5 +19,3 @@ class _MagicClass:
     def circumference(self):
         """calculates circumference of circle"""
         return 2 * math.pi * self.__radius
-
-import math
