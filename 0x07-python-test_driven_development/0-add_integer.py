@@ -11,6 +11,8 @@ def add_integer(a, b=98):
         b (int): integer value if specified, otherwise 98
     Returns:
         sum of two integers
+    Raises:
+        TypeError: if either a or b are not integers
     """
     if type(a) != int and type(a) != float:
         raise TypeError("a must be an integer")
