@@ -9,7 +9,7 @@ def matrix_divided(matrix, div):
     Args:
         matrix (:obj:`list` of :obj:`list` of :obj:`int` or :obj:`float`):
             list of lists of integers or floats
-        div: divisor
+        div (int or float): divisor
     Returns:
         a new matrix containing the quotients
     Raises:
