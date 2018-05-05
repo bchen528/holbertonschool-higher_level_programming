@@ -21,6 +21,7 @@ def matrix_mul(m_a, m_b):
     """
     new = []
     dp = 0
+    flag = 1
     if type(m_a) is not list:
         raise TypeError("m_a must be a list")
     if type(m_b) is not list:
@@ -31,8 +32,8 @@ def matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
 
     for i in range(len(m_a)):
+        inside = []
         for j in range(len(m_b[i])):
-            inside = []
             if type(m_a[i]) is not list and type(m_a[i][j]) is not int\
                and type(m_a[i][j]) is not float:
                 raise TypeError("m_a should contain only integers or floats")
@@ -53,5 +54,6 @@ def matrix_mul(m_a, m_b):
                 if k == len(m_b) - 1:
                     inside.append(dp)
                     dp = 0
-            new.append(inside)
+            if j == len(m_b[i]) - 1:
+                new.append(inside)
     return new
