@@ -34,6 +34,8 @@ def matrix_mul(m_a, m_b):
     for i in range(len(m_a)):
         inside = []
         for j in range(len(m_b[i])):
+            if len(m_a[i]) != len(m_b):
+                raise ValueError("m_a and m_b can't be multiplied")
             if type(m_a[i]) is not list and type(m_a[i][j]) is not int\
                and type(m_a[i][j]) is not float:
                 raise TypeError("m_a should contain only integers or floats")
@@ -47,8 +49,6 @@ def matrix_mul(m_a, m_b):
                 raise TypeError("each row of m_b must "
                                 "should be of the same size")
             for k in range(len(m_b)):
-                if type(m_a[i][k] * m_b[k][j]) is not int:
-                    raise ValueError("m_a and m_b can't be multiplied")
                 temp = m_a[i][k] * m_b[k][j]
                 dp += temp
                 if k == len(m_b) - 1:
