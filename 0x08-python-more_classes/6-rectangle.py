@@ -26,6 +26,9 @@ class Rectangle:
         """set height
         Args:
             value (int): height value
+        Raises:
+            TypeError: if height is not an integer
+            ValueError: if height is less than 0
         """
         if type(value) is not int:
             raise TypeError("height must be an integer")
@@ -46,6 +49,9 @@ class Rectangle:
         """set width
         Args:
             value (int): width
+        Raises:
+            TypeError: if width is not an integer
+            ValueError: if width is less than 0
         """
         if type(value) is not int:
             raise TypeError("width must be an integer")
