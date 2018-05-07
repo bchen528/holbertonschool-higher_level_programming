@@ -36,4 +36,11 @@ def text_indentation(text):
             print("{:s}".format(new))
             print()
             new = ""
-    print("{:s}".format(substring.lstrip(' ')), end="")
+    if flag == 0:
+        text = text.lstrip(' ')
+        text = text.rstrip(' ')
+        print("{:s}".format(text), end="")
+    else:
+        substring = substring.lstrip(' ')
+        substring = substring.rstrip(' ')
+        print("{:s}".format(substring), end="")
