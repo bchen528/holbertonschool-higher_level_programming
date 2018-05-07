@@ -2,7 +2,7 @@
 >>> text_indentation("tomato     .   ,,,,/\?00")
 tomato     .
 <BLANKLINE>
-  ,,,,/\?
+,,,,/\?
 <BLANKLINE>
 00
 >>> text_indentation("....")
