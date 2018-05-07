@@ -13,27 +13,27 @@ def text_indentation(text):
     Raises:
         TypeError: if text is not a string
     """
-
-    flag = 0
     new = ""
+    substring = ""
+    temp = [] * 2
+    flag = 0
+    count = 0
+    space = [] * 2
 
     if type(text) is not str:
         raise TypeError("text must be a string")
 
     for i in range(len(text)):
-        if text[i] == ' ' and i == 0:
-            new += ""
-            flag = 1
-        elif text[i] == ' ' and flag == 1:
-            new += ""
-        elif text[i] == ' ' and i - 1 >= 0 and flag == 0\
-            and (text[i - 1] == '.' or text[i - 1] == '?'
-                 or text[i - 1] == ':'):
-            new += ""
-        else:
-            new += text[i]
-        if text[i] == '.' or text[i] == '?' or text[i] == ':':
+        if i < len(text) and text[i] == '.' or text[i] == '?'\
+           or text[i] == ':':
+            if flag == 0:
+                temp = text.split(text[i], 1)
+                flag = 1
+            else:
+                temp = substring.split(text[i], 1)
+            new += temp[0].lstrip(' ') + text[i]
+            substring = temp[1]
             print("{:s}".format(new))
             print()
             new = ""
-    print("{:s}".format(new), end="")
+    print("{:s}".format(substring.lstrip(' ')), end="")
