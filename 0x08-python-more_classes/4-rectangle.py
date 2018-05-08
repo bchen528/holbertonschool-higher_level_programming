@@ -78,6 +78,8 @@ class Rectangle:
             string to be printed to stdout
         """
         new = ""
+        if self.__height == 0 or self.__width == 0:
+            return new
         for i in range(self.__height):
             for j in range(self.__width):
                 new += '#'
@@ -90,4 +92,4 @@ class Rectangle:
         Returns:
             string to be printed to stdout
         """
-        return 'Rectangle({:d},{:d})'.format(self.__width, self.__height)
+        return 'Rectangle({:d}, {:d})'.format(self.__width, self.__height)
