@@ -17,8 +17,6 @@ def text_indentation(text):
     substring = ""
     temp = [] * 2
     flag = 0
-    count = 0
-    space = [] * 2
 
     if type(text) is not str:
         raise TypeError("text must be a string")
