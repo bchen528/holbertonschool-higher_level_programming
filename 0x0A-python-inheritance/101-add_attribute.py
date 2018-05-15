@@ -4,6 +4,8 @@ def add_attribute(o, name="", given_name=""):
     Args:
         name(str): name
         given_name(str): given name
+    Raise:
+        TypeError: if new attribute is not added
     """
     obj = o
     if not hasattr(obj, "__dict__"):
