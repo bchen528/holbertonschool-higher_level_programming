@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 def add_attribute(o, name="", given_name=""):
+    """add a new attribute to an object
+    Args:
+        name(str): name
+        given_name(str): given name
+    """
     obj = o
     if not hasattr(obj, "__dict__"):
         raise TypeError("can't add new attribute")
