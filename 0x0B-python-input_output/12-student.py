@@ -2,13 +2,20 @@
 class Student:
     """creates a class Student"""
     def __init__(self, first_name, last_name, age):
-        """initialize instance attributes"""
+        """initialize instance attributes
+        Args:
+            first_name(str): first name
+            last_name(str): last name
+            age(int): age
+        """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
         """retrieves a dictionary representation of a Student instance
+        Args:
+            attrs(list): a list of attributes
         Returns:
             a dictionary representation of a Student instance
         """
