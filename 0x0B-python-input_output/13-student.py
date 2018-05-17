@@ -34,4 +34,6 @@ class Student:
         Args:
             json(dict): a dictionary
         """
+        if not json:
+            return
         self.__dict__ = json
