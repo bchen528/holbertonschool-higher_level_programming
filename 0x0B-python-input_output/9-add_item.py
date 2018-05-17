@@ -14,5 +14,4 @@ except:
 
 for i in range(1, len(argv)):
     content.append(argv[i])
-print(content)
 save_to_json_file(content, filename)
