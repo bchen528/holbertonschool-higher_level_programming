@@ -133,7 +133,19 @@ class Rectangle(Base):
                 length argument list to the function
             kwargs (dict): keyworded variable length of arguments
         """
-        if kwargs is not None:
+        if args is not None and len(args) != 0:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[i]
+                elif i == 1:
+                    self.__width = args[i]
+                elif i == 2:
+                    self.__height = args[i]
+                elif i == 3:
+                    self.__x = args[i]
+                elif i == 4:
+                    self.__y = args[i]
+        elif kwargs is not None and len(kwargs) != 0:
             for key in kwargs:
                 if key == "id":
                     self.id = kwargs[key]
@@ -145,16 +157,3 @@ class Rectangle(Base):
                     self.__x = kwargs[key]
                 elif key == "y":
                     self.__y = kwargs[key]
-        else:
-            if args is not None:
-                for i in range(len(args)):
-                    if i == 0:
-                        self.id = args[i]
-                    elif i == 1:
-                        self.__width = args[i]
-                    elif i == 2:
-                        self.__height = args[i]
-                    elif i == 3:
-                        self.__x = args[i]
-                    elif i == 4:
-                        self.__y = args[i]
