@@ -18,10 +18,12 @@ import json
 class TestSquare(unittest.TestCase):
     """class TestSquare"""
     def test_id(self):
+        Base._Base__nb_objects = 0
         s1 = Square(5)
         self.assertIsNotNone(id(s1))
 
     def test_init(self):
+        Base._Base__nb_objects = 0
         s2 = Square(5)
         self.assertIsInstance(s2, Square)
         self.assertTrue(issubclass(type(s2), Rectangle))
@@ -33,6 +35,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s4.id, 2)
 
     def test_getterAndSetter(self):
+        Base._Base__nb_objects = 0
         s5 = Square(5)
         self.assertEqual(s5.width, 5)
         self.assertEqual(s5.height, 5)
@@ -47,10 +50,12 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s5.y, 3)
 
     def test_area(self):
+        Base._Base__nb_objects = 0
         s6 = Square(5)
         self.assertEqual(s6.area(), s6.width * s6.height)
 
     def test_errors(self):
+        Base._Base__nb_objects = 0
         s = Square(5)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             s.size = "10"
@@ -66,6 +71,7 @@ class TestSquare(unittest.TestCase):
             Square(10, 3, -1)
 
     def test_display(self):
+        Base._Base__nb_objects = 0
         s7 = Square(5)
         old_stdout = sys.stdout
         result = StringIO()
@@ -92,6 +98,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(result_string, "\n\n\n ###\n ###\n ###\n")
 
     def test_str(self):
+        Base._Base__nb_objects = 0
         s8 = Square(5)
         s9 = Square(2, 2)
         s10 = Square(3, 1, 3)
@@ -103,6 +110,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(string3, "[Square] ({:d}) 1/3 - 3".format(s10.id))
 
     def test_display_xy(self):
+        Base._Base__nb_objects = 0
         s1 = Square(2, 3, 2)
         old_stdout = sys.stdout
         result = StringIO()
@@ -121,6 +129,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(result_string, "\n  ###\n  ###\n  ###\n")
 
     def test_update_args(self):
+        Base._Base__nb_objects = 0
         s1 = Square(5)
         s1.update(10)
         string = s1.__str__()
@@ -145,6 +154,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(string, "[Square] (89) 12/1 - 7")
 
     def test_dictionary(self):
+        Base._Base__nb_objects = 0
         s1 = Square(10, 2, 1, 1)
         a_dict = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
         s1_dictionary = s1.to_dictionary()

@@ -14,10 +14,12 @@ import json
 class TestBase(unittest.TestCase):
     """class TestBase"""
     def test_id(self):
+        Base._Base__nb_objects = 0
         b1 = Base()
         self.assertIsNotNone(id(b1))
 
     def test_init(self):
+        Base._Base__nb_objects = 0
         b2 = Base()
         self.assertIsInstance(b2, Base)
 
@@ -27,6 +29,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b3.id, 1)
 
     def test_toJsonString(self):
+        Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         a_dict = r1.to_dictionary()  # dict
         json_string = json.dumps([a_dict])  # str of list dict
@@ -34,6 +37,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(json_string == json_listdict)
 
     def test_saveToFile(self):
+        Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         a_dict = [r1.to_dictionary(), r2.to_dictionary()]  # list dict
@@ -43,6 +47,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(a_dict == list_dict)
 
     def test_fromJsonString(self):
+        Base._Base__nb_objects = 0
         list_input = [{'id': 89, 'width': 10, 'height': 4},
                       {'id': 7, 'width': 1, 'height': 7}]  # list dict
         json_list_input = Rectangle.to_json_string(list_input)  # str list dict
@@ -50,6 +55,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(list_input == list_output)
 
     def test_create(self):
+        Base._Base__nb_objects = 0
         r1 = Rectangle(3, 5, 1)
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
@@ -57,6 +63,7 @@ class TestBase(unittest.TestCase):
         self.assertFalse(r1 == r2)
 
     def test_loadFromFile(self):
+        Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
