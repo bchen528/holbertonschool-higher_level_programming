@@ -1,10 +1,17 @@
 #!/usr/bin/python3
 import unittest
+"""unittest"""
 from models.base import Base
+"""Base class"""
 from models.rectangle import Rectangle
+"""Rectangle class"""
 from io import StringIO
+"""StringIO"""
 import sys
+"""sys module"""
 import json
+"""JavaScript Object Notation"""
+
 
 class TestRectangle(unittest.TestCase):
 
@@ -61,15 +68,18 @@ class TestRectangle(unittest.TestCase):
         r7.display()
         sys.stdout = old_stdout
         result_string = result.getvalue()
-        self.assertEquals(result_string, "####\n####\n####\n####\n####\n####\n")
+        self.assertEquals(result_string,
+                          "####\n####\n####\n####\n####\n####\n")
 
     def test_str(self):
         r8 = Rectangle(4, 6, 2, 1, 12)
         r9 = Rectangle(5, 5, 1)
         string1 = r8.__str__()
         string2 = r9.__str__()
-        self.assertEquals(string1, "[Rectangle] ({:d}) 2/1 - 4/6".format(r8.id))
-        self.assertEquals(string2, "[Rectangle] ({:d}) 1/0 - 5/5".format(r9.id))
+        self.assertEquals(string1,
+                          "[Rectangle] ({:d}) 2/1 - 4/6".format(r8.id))
+        self.assertEquals(string2,
+                          "[Rectangle] ({:d}) 1/0 - 5/5".format(r9.id))
 
     def test_display_xy(self):
         r1 = Rectangle(2, 3, 2, 2)
@@ -93,19 +103,19 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 10, 10, 10)
         r1.update(89)
         string = r1.__str__()
-        self.assertEquals(string , "[Rectangle] (89) 10/10 - 10/10")
+        self.assertEquals(string, "[Rectangle] (89) 10/10 - 10/10")
         r1.update(89, 2)
         string = r1.__str__()
-        self.assertEquals(string , "[Rectangle] (89) 10/10 - 2/10")
+        self.assertEquals(string, "[Rectangle] (89) 10/10 - 2/10")
         r1.update(89, 2, 3)
         string = r1.__str__()
-        self.assertEquals(string , "[Rectangle] (89) 10/10 - 2/3")
+        self.assertEquals(string, "[Rectangle] (89) 10/10 - 2/3")
         r1.update(89, 2, 3, 4)
         string = r1.__str__()
-        self.assertEquals(string , "[Rectangle] (89) 4/10 - 2/3")
+        self.assertEquals(string, "[Rectangle] (89) 4/10 - 2/3")
         r1.update(89, 2, 3, 4, 5)
         string = r1.__str__()
-        self.assertEquals(string , "[Rectangle] (89) 4/5 - 2/3")
+        self.assertEquals(string, "[Rectangle] (89) 4/5 - 2/3")
 
     def test_update_kwargs(self):
         r1 = Rectangle(10, 10, 10, 10)
@@ -115,7 +125,8 @@ class TestRectangle(unittest.TestCase):
                           "[Rectangle] ({:d}) 10/10 - 10/1".format(r1.id))
         r1.update(width=1, x=2)
         string = r1.__str__()
-        self.assertEquals(string, "[Rectangle] ({:d}) 2/10 - 1/1".format(r1.id))
+        self.assertEquals(string,
+                          "[Rectangle] ({:d}) 2/10 - 1/1".format(r1.id))
         r1.update(y=1, width=2, x=3, id=89)
         string = r1.__str__()
         self.assertEquals(string, "[Rectangle] (89) 3/1 - 2/1")
