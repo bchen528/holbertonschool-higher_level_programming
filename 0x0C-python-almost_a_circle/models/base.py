@@ -91,3 +91,40 @@ class Base:
             list_instances = []
 
         return list_instances
+
+    def save_to_file_csv(cls, list_objs):
+        """
+        serializes in CSV
+        Args:
+            list_objs(list): list of objects
+        """
+        filename = "{:s}.csv".format(cls.__name__)
+
+        content = []
+        for i in range(len(list_objs)):
+            content.append(cls.to_dictionary(list_objs[i]))
+
+        with open(filename, 'w') as a_file:
+            writer = csv.writer(a_file)
+            writer.writerows(content)
+
+    def load_from_file_csv(cls):
+        """
+        deserializes in CSV
+        Returns:
+            list of instances
+        """
+
+        a_list = []
+        try:
+            with open(cls.__name__ + '.csv', 'rb') as a_file:
+                reader = csv.reader(a_file)  # str of list of dict
+                for row in reader:
+                    a_list.append(row)  # str to list
+            list_instances = []
+            for i in range(len(a_list)):  # a_list[i]: dictionary of attributes
+                list_instances.append(cls.create(**a_list[i]))
+        except:
+            list_instances = []
+
+        return list_instances
