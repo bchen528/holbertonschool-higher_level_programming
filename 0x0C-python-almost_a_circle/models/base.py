@@ -100,8 +100,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """
-        serializes in CSV
+        """serializes in CSV
         Args:
             list_objs(list): list of objects
         """
@@ -121,12 +120,10 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """
-        deserializes in CSV
+        """deserializes in CSV
         Returns:
             list of instances
         """
-
         filename = "{:s}.csv".format(cls.__name__)
         a_list = []
         try:
