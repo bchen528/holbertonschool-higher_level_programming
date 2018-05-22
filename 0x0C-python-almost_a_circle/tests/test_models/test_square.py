@@ -48,7 +48,7 @@ class TestSquare(unittest.TestCase):
 
     def test_area(self):
         s6 = Square(5)
-        self.assertEquals(s6.area(), s6.width * s6.height)
+        self.assertEqual(s6.area(), s6.width * s6.height)
 
     def test_errors(self):
         s = Square(5)
@@ -73,7 +73,7 @@ class TestSquare(unittest.TestCase):
         s7.display()
         sys.stdout = old_stdout
         result_string = result.getvalue()
-        self.assertEquals(result_string, "#####\n#####\n#####\n#####\n#####\n")
+        self.assertEqual(result_string, "#####\n#####\n#####\n#####\n#####\n")
         s8 = Square(2, 2)
         old_stdout = sys.stdout
         result = StringIO()
@@ -81,7 +81,7 @@ class TestSquare(unittest.TestCase):
         s8.display()
         sys.stdout = old_stdout
         result_string = result.getvalue()
-        self.assertEquals(result_string, "  ##\n  ##\n")
+        self.assertEqual(result_string, "  ##\n  ##\n")
         s9 = Square(3, 1, 3)
         old_stdout = sys.stdout
         result = StringIO()
@@ -89,7 +89,7 @@ class TestSquare(unittest.TestCase):
         s9.display()
         sys.stdout = old_stdout
         result_string = result.getvalue()
-        self.assertEquals(result_string, "\n\n\n ###\n ###\n ###\n")
+        self.assertEqual(result_string, "\n\n\n ###\n ###\n ###\n")
 
     def test_str(self):
         s8 = Square(5)
@@ -98,9 +98,9 @@ class TestSquare(unittest.TestCase):
         string1 = s8.__str__()
         string2 = s9.__str__()
         string3 = s10.__str__()
-        self.assertEquals(string1, "[Square] ({:d}) 0/0 - 5".format(s8.id))
-        self.assertEquals(string2, "[Square] ({:d}) 2/0 - 2".format(s9.id))
-        self.assertEquals(string3, "[Square] ({:d}) 1/3 - 3".format(s10.id))
+        self.assertEqual(string1, "[Square] ({:d}) 0/0 - 5".format(s8.id))
+        self.assertEqual(string2, "[Square] ({:d}) 2/0 - 2".format(s9.id))
+        self.assertEqual(string3, "[Square] ({:d}) 1/3 - 3".format(s10.id))
 
     def test_display_xy(self):
         s1 = Square(2, 3, 2)
@@ -110,7 +110,7 @@ class TestSquare(unittest.TestCase):
         s1.display()
         sys.stdout = old_stdout
         result_string = result.getvalue()
-        self.assertEquals(result_string, "\n\n   ##\n   ##\n")
+        self.assertEqual(result_string, "\n\n   ##\n   ##\n")
         s2 = Square(3, 2, 1)
         old_stdout = sys.stdout
         result = StringIO()
@@ -118,31 +118,31 @@ class TestSquare(unittest.TestCase):
         s2.display()
         sys.stdout = old_stdout
         result_string = result.getvalue()
-        self.assertEquals(result_string, "\n  ###\n  ###\n  ###\n")
+        self.assertEqual(result_string, "\n  ###\n  ###\n  ###\n")
 
     def test_update_args(self):
         s1 = Square(5)
         s1.update(10)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (10) 0/0 - 5")
+        self.assertEqual(string, "[Square] (10) 0/0 - 5")
         s1.update(1, 2)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (1) 0/0 - 2")
+        self.assertEqual(string, "[Square] (1) 0/0 - 2")
         s1.update(1, 2, 3)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (1) 3/0 - 2")
+        self.assertEqual(string, "[Square] (1) 3/0 - 2")
         s1.update(1, 2, 3, 4)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (1) 3/4 - 2")
+        self.assertEqual(string, "[Square] (1) 3/4 - 2")
         s1.update(x=12)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (1) 12/4 - 2")
+        self.assertEqual(string, "[Square] (1) 12/4 - 2")
         s1.update(size=7, y=1)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (1) 12/1 - 7")
+        self.assertEqual(string, "[Square] (1) 12/1 - 7")
         s1.update(size=7, id=89, y=1)
         string = s1.__str__()
-        self.assertEquals(string, "[Square] (89) 12/1 - 7")
+        self.assertEqual(string, "[Square] (89) 12/1 - 7")
 
     def test_dictionary(self):
         s1 = Square(10, 2, 1, 1)
