@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This is a Rectangle class"""
 from models.base import Base
 """superclass Base"""
 

@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This is a Base class"""
 import json
 """JavaScript Object Notation"""
 

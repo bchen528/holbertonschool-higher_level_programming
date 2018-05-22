@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This is a Square class"""
 from models.rectangle import Rectangle
 """superclass Rectangle"""
 
