@@ -1,12 +1,22 @@
+#!/usr/bin/python3
 import unittest
+"""unittest"""
 from models.base import Base
+"""Base class"""
 from models.rectangle import Rectangle
+"""Rectangle class"""
 from models.square import Square
+"""Square class"""
 from io import StringIO
+"""StringIO class"""
 import sys
+"""sys module"""
 import json
+"""JavaScript Object Notation"""
+
 
 class TestSquare(unittest.TestCase):
+    """class TestSquare"""
     def test_id(self):
         s1 = Square(5)
         self.assertIsNotNone(id(s1))
@@ -21,7 +31,6 @@ class TestSquare(unittest.TestCase):
         s3 = Square(2, 2)
         s4 = Square(5, 5)
         self.assertEqual(s4.id, 2)
-        #make number of objects counter fixed?
 
     def test_getterAndSetter(self):
         s5 = Square(5)
@@ -115,25 +124,25 @@ class TestSquare(unittest.TestCase):
         s1 = Square(5)
         s1.update(10)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (10) 0/0 - 5")
+        self.assertEquals(string, "[Square] (10) 0/0 - 5")
         s1.update(1, 2)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (1) 0/0 - 2")
+        self.assertEquals(string, "[Square] (1) 0/0 - 2")
         s1.update(1, 2, 3)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (1) 3/0 - 2")
+        self.assertEquals(string, "[Square] (1) 3/0 - 2")
         s1.update(1, 2, 3, 4)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (1) 3/4 - 2")
+        self.assertEquals(string, "[Square] (1) 3/4 - 2")
         s1.update(x=12)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (1) 12/4 - 2")
+        self.assertEquals(string, "[Square] (1) 12/4 - 2")
         s1.update(size=7, y=1)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (1) 12/1 - 7")
+        self.assertEquals(string, "[Square] (1) 12/1 - 7")
         s1.update(size=7, id=89, y=1)
         string = s1.__str__()
-        self.assertEquals(string , "[Square] (89) 12/1 - 7")
+        self.assertEquals(string, "[Square] (89) 12/1 - 7")
 
     def test_dictionary(self):
         s1 = Square(10, 2, 1, 1)
