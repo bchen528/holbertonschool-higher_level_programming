@@ -102,7 +102,7 @@ class Base:
     def save_to_file_csv(cls, list_objs):
         """serializes in CSV
         Args:
-            list_objs(list): list of objects
+            list_objs (list): list of objects
         """
         filename = "{:s}.csv".format(cls.__name__)
         content = []
