@@ -27,7 +27,8 @@ class Base:
         Returns:
             JSON string representation of list_dictionaries
         """
-        return json.dumps(list_dictionaries)
+        if list_dictionaries:
+            return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
