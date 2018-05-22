@@ -83,7 +83,7 @@ class TestRectangle(unittest.TestCase):
         string1 = r8.__str__()
         string2 = r9.__str__()
         self.assertEqual(string1,
-                          "[Rectangle] ({:d}) 2/1 - 4/6".format(r8.id))
+                         "[Rectangle] ({:d}) 2/1 - 4/6".format(r8.id))
         self.assertEqual(string2,
                          "[Rectangle] ({:d}) 1/0 - 5/5".format(r9.id))
 
