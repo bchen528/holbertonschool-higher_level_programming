@@ -39,10 +39,11 @@ class Base:
             list_objs (file): list of instances who inherits of Base
         """
         filename = "{:s}.json".format(cls.__name__)
-
         content = []
-        for i in range(len(list_objs)):
-            content.append(cls.to_dictionary(list_objs[i]))
+
+        if list_objs is not None:
+            for i in range(len(list_objs)):
+                content.append(cls.to_dictionary(list_objs[i]))
 
         with open(filename, mode="w", encoding="utf-8") as a_file:
             a_file.write(cls.to_json_string(content))
