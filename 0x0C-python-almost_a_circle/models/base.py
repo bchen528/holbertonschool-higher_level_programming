@@ -2,6 +2,8 @@
 """This is a Base class"""
 import json
 """JavaScript Object Notation"""
+import csv
+"""Comma Separated Values"""
 
 
 class Base:
@@ -88,6 +90,52 @@ class Base:
             with open(filename, mode="r", encoding="utf-8") as a_file:
                 content_string = a_file.read()  # str of list of dictionaries
             a_list = cls.from_json_string(content_string)  # str to list
+            list_instances = []
+            for i in range(len(a_list)):  # a_list[i]: dictionary of attributes
+                list_instances.append(cls.create(**a_list[i]))
+        except:
+            list_instances = []
+
+        return list_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        serializes in CSV
+        Args:
+            list_objs(list): list of objects
+        """
+        filename = "{:s}.csv".format(cls.__name__)
+        content = []
+        for i in range(len(list_objs)):
+            content.append(cls.to_dictionary(list_objs[i]))  # [{...}, {...}]
+
+        with open(filename, 'w') as a_file:
+            if cls.__name__ == "Rectangle":
+                fieldnames = ['id', 'width', 'height', 'x', 'y']
+            if cls.__name__ == "Square":
+                fieldnames = ['id', 'size', 'x', 'y']
+            writer = csv.DictWriter(a_file, fieldnames=fieldnames)
+            writer.writeheader()  # add keys
+            writer.writerows(content)  # [{...}, {...}]
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        deserializes in CSV
+        Returns:
+            list of instances
+        """
+
+        filename = "{:s}.csv".format(cls.__name__)
+        a_list = []
+        try:
+            with open(filename, 'r') as a_file:
+                reader = csv.DictReader(a_file)  # str of list of dict
+                for row in reader:
+                    for key in row:
+                        row[key] = int(row[key])
+                    a_list.append(row)  # str to list
             list_instances = []
             for i in range(len(a_list)):  # a_list[i]: dictionary of attributes
                 list_instances.append(cls.create(**a_list[i]))
