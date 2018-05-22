@@ -14,7 +14,7 @@ import json
 
 
 class TestRectangle(unittest.TestCase):
-
+    """class TestRectangle"""
     def test_id(self):
         r1 = Rectangle(10, 2)
         self.assertIsNotNone(id(r1))
