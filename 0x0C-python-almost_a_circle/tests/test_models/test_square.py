@@ -1,40 +1,38 @@
 #!/usr/bin/python3
 import unittest
-"""unittest"""
 from models.base import Base
-"""Base class"""
 from models.rectangle import Rectangle
-"""Rectangle class"""
 from models.square import Square
-"""Square class"""
 from io import StringIO
-"""StringIO class"""
 import sys
-"""sys module"""
 import json
-"""JavaScript Object Notation"""
+import pep8
 
 
 class TestSquare(unittest.TestCase):
     """class TestSquare"""
     def test_id(self):
+        """check instance was created"""
         Base._Base__nb_objects = 0
         s1 = Square(5)
         self.assertIsNotNone(id(s1))
 
     def test_init(self):
+        """check that instance was created from correct class"""
         Base._Base__nb_objects = 0
         s2 = Square(5)
         self.assertIsInstance(s2, Square)
         self.assertTrue(issubclass(type(s2), Rectangle))
 
     def test_numObj(self):
+        """check number of instances created"""
         Base._Base__nb_objects = 0
         s3 = Square(2, 2)
         s4 = Square(5, 5)
         self.assertEqual(s4.id, 2)
 
     def test_getterAndSetter(self):
+        """check getter and setter"""
         Base._Base__nb_objects = 0
         s5 = Square(5)
         self.assertEqual(s5.width, 5)
@@ -50,11 +48,13 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s5.y, 3)
 
     def test_area(self):
+        """check area"""
         Base._Base__nb_objects = 0
         s6 = Square(5)
         self.assertEqual(s6.area(), s6.width * s6.height)
 
     def test_errors(self):
+        """check errors"""
         Base._Base__nb_objects = 0
         s = Square(5)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -71,6 +71,7 @@ class TestSquare(unittest.TestCase):
             Square(10, 3, -1)
 
     def test_display(self):
+        """check display"""
         Base._Base__nb_objects = 0
         s7 = Square(5)
         old_stdout = sys.stdout
@@ -98,6 +99,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(result_string, "\n\n\n ###\n ###\n ###\n")
 
     def test_str(self):
+        """check str"""
         Base._Base__nb_objects = 0
         s8 = Square(5)
         s9 = Square(2, 2)
@@ -110,6 +112,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(string3, "[Square] ({:d}) 1/3 - 3".format(s10.id))
 
     def test_display_xy(self):
+        """check display with xy attributes"""
         Base._Base__nb_objects = 0
         s1 = Square(2, 3, 2)
         old_stdout = sys.stdout
@@ -128,7 +131,8 @@ class TestSquare(unittest.TestCase):
         result_string = result.getvalue()
         self.assertEqual(result_string, "\n  ###\n  ###\n  ###\n")
 
-    def test_update_args(self):
+    def test_update(self):
+        """check args, kwargs"""
         Base._Base__nb_objects = 0
         s1 = Square(5)
         s1.update(10)
@@ -154,8 +158,30 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(string, "[Square] (89) 12/1 - 7")
 
     def test_dictionary(self):
+        """check dictionary conversion"""
         Base._Base__nb_objects = 0
         s1 = Square(10, 2, 1, 1)
         a_dict = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
         s1_dictionary = s1.to_dictionary()
         self.assertTrue(s1_dictionary == a_dict)
+
+    def test_empty(self):
+        """check empty arguments"""
+        Base._Base__nb_objects = 0
+        s1 = Square(5)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.size = None
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.size = ""
+
+    def test_pep8_model(self):
+        """tests for pep8"""
+        p8 = pep8.StyleGuide(quiet=True)
+        p = p8.check_files(['models/base.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_pep8_test(self):
+        """tests for pep8"""
+        p8 = pep8.StyleGuide(quiet=True)
+        p = p8.check_files(['tests/test_models/test_base.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")

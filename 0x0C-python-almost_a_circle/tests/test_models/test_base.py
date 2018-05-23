@@ -1,14 +1,10 @@
 #!/usr/bin/python3
 import unittest
-"""unittest"""
 from models.base import Base
-"""Base class"""
 from models.rectangle import Rectangle
-"""Rectangle class"""
 from models.square import Square
-"""Square class"""
 import json
-"""JavaScript Object Notation"""
+import pep8
 
 
 class TestBase(unittest.TestCase):
@@ -84,3 +80,15 @@ class TestBase(unittest.TestCase):
             self.assertTrue(isinstance(sqr, Square))
         for sqr in list_squares_output:
             self.assertTrue(isinstance(sqr, Square))
+
+    def test_pep8_model(self):
+        """tests for pep8"""
+        p8 = pep8.StyleGuide(quiet=True)
+        p = p8.check_files(['models/base.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_pep8_test(self):
+        """tests for pep8"""
+        p8 = pep8.StyleGuide(quiet=True)
+        p = p8.check_files(['tests/test_models/test_base.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
