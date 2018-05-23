@@ -10,21 +10,25 @@ import pep8
 class TestBase(unittest.TestCase):
     """class TestBase"""
     def test_id(self):
+        """check id"""
         Base._Base__nb_objects = 0
         b1 = Base()
         self.assertIsNotNone(id(b1))
 
     def test_init(self):
+        """check instance"""
         Base._Base__nb_objects = 0
         b2 = Base()
         self.assertIsInstance(b2, Base)
 
     def test_numObj(self):
+        """check number of objects"""
         Base._Base__nb_objects = 0
         b3 = Base()
         self.assertEqual(b3.id, 1)
 
     def test_toJsonString(self):
+        """check to_json_string"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         a_dict = r1.to_dictionary()  # dict
@@ -33,6 +37,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(json_string == json_listdict)
 
     def test_saveToFile(self):
+        """check save_to_file"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
@@ -43,6 +48,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(a_dict == list_dict)
 
     def test_fromJsonString(self):
+        """check from_json_string"""
         Base._Base__nb_objects = 0
         list_input = [{'id': 89, 'width': 10, 'height': 4},
                       {'id': 7, 'width': 1, 'height': 7}]  # list dict
@@ -51,6 +57,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(list_input == list_output)
 
     def test_create(self):
+        """check create"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(3, 5, 1)
         r1_dictionary = r1.to_dictionary()
@@ -59,6 +66,7 @@ class TestBase(unittest.TestCase):
         self.assertFalse(r1 == r2)
 
     def test_loadFromFile(self):
+        """check load from file"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
