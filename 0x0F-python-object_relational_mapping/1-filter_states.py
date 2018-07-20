@@ -15,3 +15,5 @@ if __name__ == "__main__":
     LIKE 'N%' ORDER BY states.id")
     for i in range(num_rows):
         print(cur.fetchone())
+    cur.close()
+    db.close()
