@@ -13,6 +13,9 @@ if __name__ == "__main__":
     cur = db.cursor()
     sql = "SELECT * FROM states WHERE name='{}'\
     ORDER BY states.id".format(argv[4])
-    num_rows = cur.execute(sql)
-    for i in range(num_rows):
-        print(cur.fetchone())
+    cur.execute(sql)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
+    db.close()
