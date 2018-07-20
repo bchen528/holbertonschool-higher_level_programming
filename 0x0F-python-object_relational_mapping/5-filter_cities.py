@@ -16,12 +16,12 @@ if __name__ == "__main__":
     ORDER BY cities.id"
     num_rows = cur.execute(sql, (argv[4],))
     rows = cur.fetchall()
+    result = []
     i = 0
     for row in rows:
-        if i != num_rows - 1:
-            print("{}, ".format(row[0]), end="")
-        else:
-            print("{}".format(row[0]))
+        result.append(rows[i][0])
         i += 1
+    joined = ", ".join(result)
+    print(joined)
     cur.close()
     db.close()
