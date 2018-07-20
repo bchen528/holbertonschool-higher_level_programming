@@ -18,6 +18,6 @@ if __name__ == "__main__":
     session = Session(engine)
     new = State(name="Louisiana")
     session.add(new)
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
+    for state in session.query(State).filter_by(name="Louisiana").order_by(State.id).all():
+        print("{}".format(state.id))
     session.close()
