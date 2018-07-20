@@ -21,5 +21,5 @@ if __name__ == "__main__":
     session.commit()
     for state in session.query(State).filter_by(name="Louisiana")\
                                      .order_by(State.id).all():
-        print("{}{}".format(state.id, state.name))
+        print("{}".format(state.id))
     session.close()
