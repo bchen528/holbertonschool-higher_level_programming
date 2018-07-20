@@ -15,13 +15,13 @@ if __name__ == "__main__":
     cities.state_id = states.id WHERE states.name=%s\
     ORDER BY cities.id"
     num_rows = cur.execute(sql, (argv[4],))
-    for i in range(num_rows):
-        res = cur.fetchone()
+    rows = cur.fetchall()
+    i = 0
+    for row in rows:
         if i != num_rows - 1:
-            for item in res:
-                print("{}, ".format(res[0]), end="")
+            print("{}, ".format(row[0]), end="")
         else:
-            for item in res:
-                print("{}".format(res[0]))
+            print("{}".format(row[0]))
+        i += 1
     cur.close()
     db.close()
