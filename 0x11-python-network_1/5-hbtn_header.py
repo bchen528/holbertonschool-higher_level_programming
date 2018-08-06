@@ -13,5 +13,8 @@ if __name__ == "__main__":
     the value of the X-Request-Id variable found in the header
     of the response using requests"""
     r = requests.get(argv[1])
-    r_id = r.headers['X-Request-Id']
-    print(r_id)
+    try:
+        r_id = r.headers['X-Request-Id']
+        print(r_id)
+    except:
+        pass
