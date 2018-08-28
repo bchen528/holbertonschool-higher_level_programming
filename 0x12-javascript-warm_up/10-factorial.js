@@ -1,8 +1,8 @@
 #!/usr/bin/node
-function factorialize (n) {
+function getFactorial (n) {
   if (isNaN(n) === true || n === 0) {
     return (1);
   }
-  return (n * factorialize(n - 1));
+  return (n * getFactorial(n - 1));
 }
-console.log(factorialize(parseInt(process.argv[2], 10)));
+console.log(getFactorial(parseInt(process.argv[2], 10)));
