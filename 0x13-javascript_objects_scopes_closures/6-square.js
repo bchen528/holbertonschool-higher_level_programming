@@ -28,21 +28,18 @@ class Rectangle {
   }
 }
 
-class Square extends Rectangle {
+module.exports = class Square extends Rectangle {
   constructor (size) {
     super(size, size);
   }
-}
-
-module.exports = class Square2 extends Square {
   charPrint (c) {
-    if (c && typeof c !== 'undefined' && typeof c === 'string') {
+    if (typeof c === 'undefined') {
+      super.print();
+    } else {
       let y = c;
       for (let i = 0; i < this.height; i++) {
         console.log(y.repeat(this.width));
       }
-    } else {
-      super.print();
     }
   }
 };
