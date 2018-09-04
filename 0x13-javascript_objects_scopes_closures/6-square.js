@@ -34,12 +34,11 @@ module.exports = class Square extends Rectangle {
   }
   charPrint (c) {
     if (typeof c === 'undefined') {
-      super.print();
-    } else {
-      let y = c;
-      for (let i = 0; i < this.height; i++) {
-        console.log(y.repeat(this.width));
-      }
+      c = 'X';
+    }
+    let y = c;
+    for (let i = 0; i < this.height; i++) {
+      console.log(y.repeat(this.width));
     }
   }
 };
