@@ -26,12 +26,6 @@ class Rectangle {
     this.height = this.height * 2;
     this.width = this.width * 2;
   }
-}
-
-module.exports = class Square extends Rectangle {
-  constructor (size) {
-    super(size, size);
-  }
 
   charPrint (c) {
     if (c && typeof c !== 'undefined' && typeof c === 'string') {
@@ -40,7 +34,16 @@ module.exports = class Square extends Rectangle {
         console.log(y.repeat(this.width));
       }
     } else {
-      super.print();
+      this.print();
     }
+  }
+}
+
+module.exports = class Square extends Rectangle {
+  constructor (size) {
+    super(size, size);
+  }
+  charPrint (c) {
+    super.charPrint(c);
   }
 };
