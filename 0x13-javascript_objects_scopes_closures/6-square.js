@@ -34,7 +34,7 @@ module.exports = class Square extends Rectangle {
   }
 
   charPrint (c) {
-    if (c) {
+    if (c && typeof c !== 'undefined' && typeof c === 'string') {
       let y = c;
       for (let i = 0; i < this.height; i++) {
         console.log(y.repeat(this.width));
