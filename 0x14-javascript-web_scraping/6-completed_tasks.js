@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const request = require('request');
-const url = process.argv[2] + '?completed=true';
+const url = process.argv[2];
 
 function taskDoneCount (url) {
   request(url, function (error, response, body) {
@@ -8,12 +8,16 @@ function taskDoneCount (url) {
       console.log(error);
     } else {
       let taskDict = {};
-      let res = JSON.parse(body);
-      for (let i = 0; i < res.length; i++) {
-        taskDict[res[i].userId] = 0;
+      let taskList = JSON.parse(body);
+      for (let i = 0; i < taskList.length; i++) {
+        if (taskDict[taskList[i].userId] === undefined) {
+          taskDict[taskList[i].userId] = 0;
+        }
       }
-      for (let j = 0; j < res.length; j++) {
-        taskDict[res[j].userId]++;
+      for (let j = 0; j < taskList.length; j++) {
+        if (taskList[j].completed === true) {
+          taskDict[taskList[j].userId]++;
+        }
       }
       console.log(taskDict);
     }
