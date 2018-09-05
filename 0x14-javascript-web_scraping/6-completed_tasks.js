@@ -12,7 +12,8 @@ function taskDoneCount (url) {
       for (let i = 0; i < taskList.length; i++) {
         if (taskDict[taskList[i].userId] === undefined) {
           taskDict[taskList[i].userId] = 0;
-        } else if (taskList[i].completed === true) {
+        }
+        if (taskList[i].completed === true) {
           taskDict[taskList[i].userId]++;
         }
       }
