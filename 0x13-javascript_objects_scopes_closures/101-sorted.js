@@ -8,3 +8,4 @@ Object.keys(oldDict).forEach(function (key) {
   }
   newDict[oldDict[key]].push(key);
 });
+console.log(newDict);
