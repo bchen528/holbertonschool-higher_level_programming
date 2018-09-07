@@ -32,4 +32,4 @@
 [103-script.js](103-script.js) - fetches and prints the wind speed by using this URL: https://query.yahooapis.com/v1/public/yql?q=select%20wind%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22:city_name%22)&format=json, where:
   * wind speed must be display in the HTML tag `DIV#wind_speed`
   * city name must be the value of the tag `INPUT#city_search`
-  * wind speed must be fetch when the user clicks on `INPUT#btn_search` OR press ENTER when the focus is on INPUT#city_search
+  * wind speed must be fetch when the user clicks on `INPUT#btn_search` OR press ENTER when the focus is on `INPUT#city_search`
